@@ -2,13 +2,12 @@
     <h1>Bank</h1>
     <h4>{{aim}}</h4>
     <form>
-        <input (change)="acnoChange($event)" type="text" id="bank" [placeholder]="account">
+        <input #acno type="text" id="bank" [placeholder]="account">
         <br>
-        <input 
-        (change)="pswdChange($event)" type="password" id="pass" placeholder="password">
+        <input #pswd type="password" id="pass" placeholder="password">
     </form>
     <br>
-    <button id="btn" (click)="login()">login</button>
+    <button id="btn" (click)="login(acno,pswd)">login</button>
     <br>
     <p style="color: white;">forgot password? <br><a href="">sign in</a></p>
 </div>
