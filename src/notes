@@ -1,0 +1,7 @@
+      Angular
+
+basic comand
+
+1) ng new project_name - to create a new project_name
+2) ng g ccomponent_name - to create a new ccomponent_name
+3) ng serve --open - to run anguar file
