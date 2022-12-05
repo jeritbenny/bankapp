@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +11,12 @@ export class LoginComponent implements OnInit {
   aim="your perfect banking panter";
 
   account="enter the acc_no";
-  acno=''
-  pswd=''
+  acno='';
+  pswd='';
 
-  userDetails:any={
-   1001:{acno:1001,username:"jerry",password:1000,balance:1000},
-   1002:{acno:1002,username:"jerit",password:1001,balance:1000},
-   1003:{acno:1003,username:"jerin",password:1002,balance:1000}
+  
 
-  }
-
-  constructor() { }
+  constructor(private ds:DataService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -37,22 +34,48 @@ export class LoginComponent implements OnInit {
     
   }
 
-  login(a:any,p:any){
+  // login(a:any,p:any){
+  //   //alert("login clicked");
+  //   var acno=a.value;
+  //   var pswd=p.value;
+  //   var userDetails=this.userDetails;
+  //   if(acno in userDetails){
+  //     if(pswd==userDetails[acno]['password']){
+  //       alert("login sussessful");
+  //     }
+  //     else{
+  //       alert('invalid password');
+  //     }
+  //   }
+  //   else{
+  //     alert('Invalid user details');
+  //   }
+  // }
+  login(){
     //alert("login clicked");
-    var acno=a.value;
-    var pswd=p.value;
-    var userDetails=this.userDetails;
-    if(acno in userDetails){
-      if(pswd==userDetails[acno]['password']){
-        alert("login sussessful");
-      }
-      else{
-        alert('invalid password');
-      }
+    var acno=this.acno;
+    var pswd=this.pswd;
+    var userDetails=this.ds.userDetails;
+    const result=this.ds.login(acno,pswd)
+    if(result){
+      alert("login sussessful");
+      this.router.navigateByUrl('dashboard');
     }
     else{
-      alert('Invalid user details');
+      alert('login failed');
     }
-  }
+
+  //   if(acno in userDetails){
+  //     if(pswd==userDetails[acno]['password']){
+      
+  //     }
+  //     else{
+       
+  //     }
+  //   }
+  //   else{
+  //     alert('Invalid user details');
+  //   }
+   }
 
 }

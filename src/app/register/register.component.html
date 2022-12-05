@@ -1,1 +1,13 @@
-<p>register works!</p>
+<div>
+    <h1>My Bank</h1>
+    <form [formGroup]="registerForm">
+        <input   formControlName="uname" type="text" id="usr" name="userName" placeholder="Username" >
+        <br>
+        <input formControlName="acno" type="text" id="acc" name="Account number" placeholder="Account No" >
+        <br>
+        <input formControlName="pswd" type="password" id="pass1" name="password" placeholder="password">
+    </form>
+    <button id="btnn" (click)="register()">Register</button>
+    <a routerLink="">Sign in</a>
+</div>
+

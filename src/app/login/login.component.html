@@ -2,13 +2,15 @@
     <h1>Bank</h1>
     <h4>{{aim}}</h4>
     <form>
-        <input #acno type="text" id="bank" [placeholder]="account">
+        <input 
+        [(ngModel)]="acno" type="text" id="bank" [placeholder]="account" [ngModelOptions]="{standalone: true}">
         <br>
-        <input #pswd type="password" id="pass" placeholder="password">
+        <input 
+        [(ngModel)]="pswd" type="password" id="pass" placeholder="password" [ngModelOptions]="{standalone: true}">
     </form>
     <br>
-    <button id="btn" (click)="login(acno,pswd)">login</button>
+    <button id="btn" (click)="login()">login</button>
     <br>
-    <p style="color: white;">forgot password? <br><a href="">sign in</a></p>
+    <p style="color: white;">forgot password? <br><a routerLink="register">sign up</a></p>
 </div>
 

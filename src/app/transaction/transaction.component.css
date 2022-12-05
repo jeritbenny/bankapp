@@ -1,0 +1,10 @@
+table,tr,th,td{
+    color: orange;
+    border:  solid black;
+    font-size: 29px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    padding: 10px;
+
+}
