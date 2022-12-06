@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -14,9 +15,13 @@ export class LoginComponent implements OnInit {
   acno='';
   pswd='';
 
-  
+   //login model 
+   loginForm=this.fb.group({//group
+    acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+    pswd:['',[Validators.required,Validators.pattern('[a-z A-Z 0-9]*')]]
+  })
 
-  constructor(private ds:DataService,private router:Router) { }
+  constructor(private ds:DataService,private router:Router,private fb:FormBuilder) { }
 
   ngOnInit(): void {
   }
@@ -53,29 +58,22 @@ export class LoginComponent implements OnInit {
   // }
   login(){
     //alert("login clicked");
-    var acno=this.acno;
-    var pswd=this.pswd;
+    var acno=this.loginForm.value.acno;
+    var pswd=this.loginForm.value.pswd;
     var userDetails=this.ds.userDetails;
-    const result=this.ds.login(acno,pswd)
-    if(result){
-      alert("login sussessful");
-      this.router.navigateByUrl('dashboard');
+    if(this.loginForm.valid){
+      const result=this.ds.login(acno,pswd)
+      if(result){
+        alert("login sussessful");
+        this.router.navigateByUrl('dashboard');
+      }
+      else{
+        alert('login failed')
+      }
     }
     else{
-      alert('login failed');
+      alert('Invalid form');
     }
-
-  //   if(acno in userDetails){
-  //     if(pswd==userDetails[acno]['password']){
-      
-  //     }
-  //     else{
-       
-  //     }
-  //   }
-  //   else{
-  //     alert('Invalid user details');
-  //   }
    }
 
 }

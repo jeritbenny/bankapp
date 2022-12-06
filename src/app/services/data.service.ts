@@ -9,6 +9,35 @@ export class DataService {
 //to get current acno
  currentAcno="";
   constructor() { }
+
+//savedetails - to store data into th local storage
+
+saveDetails(){
+  if(this.userDetails){
+        localStorage.setItem('DataBase',JSON.stringify(this.userDetails))
+  }
+  if(this.currentUser){
+    localStorage.setItem('currentUser',JSON.stringify(this.currentUser))
+}
+if(this.currentAcno){
+  localStorage.setItem('currentAcno',JSON.stringify(this.currentAcno))
+}
+}
+
+getDetails(){
+  if(this.userDetails){
+    this.userDetails=JSON.parse(localStorage.getItem('DataBase')|| '')
+  }
+  if(this.currentAcno){
+    this.currentAcno=JSON.parse(localStorage.getItem('currentAcno')|| '')
+  }
+  if(this.currentUser){
+    this.currentUser=JSON.parse(localStorage.getItem('currentUser')|| '')
+  } 
+}
+
+
+//database
   userDetails:any={
     1001:{acno:1001,username:"jerry",password:1000,balance:1000,transaction:[]},
     1002:{acno:1002,username:"jerit",password:1001,balance:1000,transaction:[]},
@@ -29,8 +58,8 @@ export class DataService {
         transaction:[]
       }
       console.log(userDetails);
+      this.saveDetails();
       return true;
-
     }
    }
    login(acno:any,pswd:any){
@@ -39,6 +68,8 @@ export class DataService {
     if(pswd==userDetails[acno]['password']){
       this.currentUser=userDetails[acno]['username']
       this.currentAcno=acno
+      this.saveDetails();
+
       return true;
     }
     else{
@@ -61,7 +92,8 @@ deposit(acno:any,pswd:any,amt:any){
         Amount:amount
       })
       console.log(userDetails);
-      
+      this.saveDetails();
+
       return userDetails[acno]['balance']
     }
     else{
@@ -85,6 +117,7 @@ deposit(acno:any,pswd:any,amt:any){
           Type:'debit',
           Amount:amount
         })
+        this.saveDetails();
         return userDetails[acno]['balance']
       }
       

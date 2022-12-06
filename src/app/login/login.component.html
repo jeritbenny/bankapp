@@ -1,12 +1,14 @@
 <div id="div1">
     <h1>Bank</h1>
     <h4>{{aim}}</h4>
-    <form>
-        <input 
-        [(ngModel)]="acno" type="text" id="bank" [placeholder]="account" [ngModelOptions]="{standalone: true}">
+    <form [formGroup]="loginForm">
+        <input formControlName="acno" type="text" id="bank" [placeholder]="account" name="acno">
         <br>
-        <input 
-        [(ngModel)]="pswd" type="password" id="pass" placeholder="password" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color:red;">Invalid Account Number</div>
+
+        <input formControlName="pswd" type="password" id="pass" placeholder="password" name="password">
+        <div *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color:red;">Invalid Password</div>
+
     </form>
     <br>
     <button id="btn" (click)="login()">login</button>
