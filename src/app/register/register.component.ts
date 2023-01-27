@@ -34,21 +34,16 @@ var username=this.registerForm.value.uname;
 var password=this.registerForm.value.pswd;
 var acno=this.registerForm.value.acno;
 if(this.registerForm.valid){
-  console.log(this.registerForm.get('uname')?.errors);
+ // console.log(this.registerForm.get('uname')?.errors);
   
-  const result=this.ds.register(acno,username,password);
-  if(result){
-    alert('register succesful')
-    this.router.navigateByUrl('')
+  this.ds.register(acno,username,password)
+  .subscribe((result:any)=>{
+       alert(result.message);
+       this.router.navigateByUrl('')
+  },
+  result=>{
+    alert(result.error.message)
   }
-  else{
-    alert('register failed')
-    this.router.navigateByUrl('')
-  }
-}
-else{
-  alert('Invalid form');
-}
-
+  )}
 }
 }

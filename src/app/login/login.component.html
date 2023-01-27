@@ -1,18 +1,20 @@
-<div id="div1">
-    <h1>Bank</h1>
+<h1>Canva Bank</h1>
+
+<P class="p1">"Your Money is Safe in our hands"</P>
+ <div id="div1">
     <h4>{{aim}}</h4>
     <form [formGroup]="loginForm">
         <input formControlName="acno" type="text" id="bank" [placeholder]="account" name="acno">
         <br>
-        <div *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color:red;">Invalid Account Number</div>
+        <div id="div11" *ngIf="this.loginForm.get('acno')?.errors && this.loginForm.get('acno')?.touched" style="color:red;">Invalid Account Number</div>
 
-        <input formControlName="pswd" type="password" id="pass" placeholder="password" name="password">
-        <div *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color:red;">Invalid Password</div>
+        <input formControlName="pswd" type="password" id="pass" placeholder="Password" name="password">
+        <div id="div12" *ngIf="this.loginForm.get('pswd')?.errors && this.loginForm.get('pswd')?.touched" style="color:red;">Invalid Password</div>
 
     </form>
     <br>
-    <button id="btn" (click)="login()">login</button>
+    <button id="btn" (click)="login()">Login</button>
     <br>
-    <p style="color: white;">forgot password? <br><a routerLink="register">sign up</a></p>
+    <p style="color: white;">forgot password? </p><button class="btn"><a routerLink="register">Register</a></button>
 </div>
 

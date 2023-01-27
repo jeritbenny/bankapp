@@ -1,18 +1,19 @@
-<div>
-    <h1>My Bank</h1>
+<h1>Canva Bank</h1>
+<div class="div1">
+    <h1>Register </h1>
     <form [formGroup]="registerForm">
         <input   formControlName="uname" type="text" id="usr" name="userName" placeholder="Username" >
         <br>
-        <div *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color:red;">Invalid user</div>
+        <div id="val" *ngIf="this.registerForm.get('uname')?.errors && this.registerForm.get('uname')?.touched" style="color:red;">Invalid user</div>
         <input formControlName="acno" type="text" id="acc" name="Account number" placeholder="Account No" >
         <br>
-        <div *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" style="color:red;">Invalid account_Number</div>
+        <div id="val" *ngIf="this.registerForm.get('acno')?.errors && this.registerForm.get('acno')?.touched" style="color:red;">Invalid account_Number</div>
 
         <input formControlName="pswd" type="password" id="pass1" name="password" placeholder="password">
-        <div *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color:red;">Invalid password</div>
+        <div id="val" *ngIf="this.registerForm.get('pswd')?.errors && this.registerForm.get('pswd')?.touched" style="color:red;">Invalid password</div>
 
     </form>
     <button id="btnn" (click)="register()">Register</button>
-    <a routerLink="">Sign in</a>
+    
 </div>
 

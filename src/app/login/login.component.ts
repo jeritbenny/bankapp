@@ -9,9 +9,9 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  aim="your perfect banking panter";
+  aim="Your perfect banking partner";
 
-  account="enter the acc_no";
+  account="Enter Account Number";
   acno='';
   pswd='';
 
@@ -56,24 +56,32 @@ export class LoginComponent implements OnInit {
   //     alert('Invalid user details');
   //   }
   // }
-  login(){
-    //alert("login clicked");
-    var acno=this.loginForm.value.acno;
-    var pswd=this.loginForm.value.pswd;
-    var userDetails=this.ds.userDetails;
-    if(this.loginForm.valid){
-      const result=this.ds.login(acno,pswd)
-      if(result){
-        alert("login sussessful");
-        this.router.navigateByUrl('dashboard');
-      }
-      else{
-        alert('login failed')
-      }
-    }
-    else{
-      alert('Invalid form');
-    }
-   }
+  login() {
+    // alert('login clicked')
+ 
+    // var userDetails = this.ds.userDetails;
 
+    if (this.loginForm.valid) {
+      var acno = this.loginForm.value.acno;
+      var pswd = this.loginForm.value.pswd;
+      this.ds.login(acno, pswd)
+      .subscribe((result:any)=>{
+        localStorage.setItem('currentUser',JSON.stringify(result.currentUser));
+        localStorage.setItem('currentAcno',JSON.stringify(result.currentAcno));
+        localStorage.setItem('token',JSON.stringify(result.token));
+        alert(result.message);
+        this.router.navigateByUrl('dashboard');
+      },
+      result =>{
+        alert('result.error.message')
+      }
+      )
+     
+    }
+
+//     else {
+//       alert('invalid form')
+
+//     }
+  }
 }

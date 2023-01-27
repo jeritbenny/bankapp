@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -42,54 +43,59 @@ amount1:['',[Validators.required,Validators.pattern('[0-9]*')]]//array
 })
 
   constructor(private ds:DataService,private fb:FormBuilder,private router:Router) { 
-    this.user=this.ds.currentUser;
+    if(localStorage.getItem("currentUser")){
+      this.user=JSON.parse(localStorage.getItem("currentUser")||'');
+    }
+    // this.user=this.ds.currentUser;
+   // this.user=JSON.parse(localStorage.getItem('currentUser')||'');
     this.sdate = new Date()
   }
 
   ngOnInit(): void {
-    if(!localStorage.getItem('currentAcno')){
+    if(!localStorage.getItem('currentUser')){
       alert('please login first')
-     this.router.navigateByUrl('');
+      this.router.navigateByUrl('');
     }
+    
   }
+ 
 deposit(){
   var acno = this.depositeForm.value.acno;
   var pswd = this.depositeForm.value.pswd;
   var amount = this.depositeForm.value.amount;
   if(this.depositeForm.valid){
-    const result = this.ds.deposit(acno,pswd,amount);
-    if(result){
-      alert(`${amount} is credited ... your balance is${result}`)
-    }
-    else{
-      alert("transaction Error")
-    }
-  }
-  else{
-    alert('invalid form');
-  }
+   this.ds.deposit(acno,pswd,amount)
+   .subscribe((result:any)=>{
+    alert(result.message)
+   },
+   result=>{
+    alert(result.error.message)
+   }
+   )
+ 
+}
 }
 withdraw(){
   var acno = this.withdrawForm.value.acno1;
   var pswd = this.withdrawForm.value.pswd1;
   var amount = this.withdrawForm.value.amount1;
   if(this.withdrawForm.valid){
-    const result = this.ds.withdraw(acno,pswd,amount);
-    if(result){
-      alert(`${amount} is debited... your balance is${result}`)
+    this.ds.withdraw(acno,pswd,amount)
+    .subscribe((result:any)=>{
+     alert(result.message)
+    },
+    result=>{
+     alert(result.error.message)
     }
-    else{
-      alert("transaction Error")
-    }
-  }
- else{
-  alert('invalid form');
+    )
  }
 }
 logout(){
   //remove username and acno
   localStorage.removeItem('currentAcno')
   localStorage.removeItem('currentUser')
+  localStorage.removeItem('token')
+
   this.router.navigateByUrl('')
 }
 delete(){
@@ -98,5 +104,18 @@ delete(){
 }
 onCancel(){
   this.acno="";
+}
+onDelete(event:any){
+ // alert(event)
+ this.ds.deleteAcc(event)
+ .subscribe((result:any)=>{
+  alert(result.message)
+ // this.router.navigateByUrl('');
+    this.logout();
+ },
+ result=>{
+  alert(result.error.message)
+ }
+ )
 }
 }

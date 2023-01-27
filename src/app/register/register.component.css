@@ -1,0 +1,58 @@
+.div1{
+    height: 480px;
+    width: 400px;
+    margin-left: 70px;
+    margin-top: 90px;
+    border: 2px solid red;
+    border-radius: 10px;
+}
+h1{
+    font-size: 50px;
+    color: beige;
+    font-weight:bolder ;
+    text-align: center;
+}
+#usr{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   padding: 8px;
+   padding-left: 70px;
+   border-radius: 8px;
+}
+#acc{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 8px;
+    padding-left: 70px;
+    border-radius: 8px;
+}
+#pass1{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 8px;
+    padding-left: 70px;
+    border-radius: 8px;
+}
+#btnn{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+
+}
+#btnn:hover{
+    background-color: orange;
+}
+#val{
+    margin-left: 120px;
+   
+}
