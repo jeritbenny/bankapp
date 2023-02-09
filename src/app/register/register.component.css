@@ -1,14 +1,19 @@
 .div1{
-    height: 480px;
+    height: 450px;
     width: 400px;
     margin-left: 70px;
     margin-top: 90px;
     border: 2px solid red;
     border-radius: 10px;
+    background-color: rgb(104, 143, 177);
+}
+.hh{
+    background-color: black;
+    color: orange;
 }
 h1{
     font-size: 50px;
-    color: beige;
+    color: rgb(42, 42, 38);
     font-weight:bolder ;
     text-align: center;
 }

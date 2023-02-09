@@ -8,3 +8,6 @@ table,tr,th,td{
     padding: 10px;
 
 }
+table{
+    background-color: aliceblue;
+}

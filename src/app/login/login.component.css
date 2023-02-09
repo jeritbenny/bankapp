@@ -1,21 +1,23 @@
 #div1{
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 450px;
     margin-left: 90px;
     margin-top: 90px;
-    border: 3px solid white;
+    border: 3px solid rgb(21, 20, 20);
     border-radius: 10px;
+    background-color: #fff;
 }
 h1{
     margin-top: 0;
-    color: aquamarine;
+    color: rgb(217, 145, 31);
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bolder;
     font-size: 80px;
+    background-color: black;
 }
 h4{
-    color: aliceblue;
+    color: rgb(21, 22, 24);
     text-align: center;
     font-size: 40px;
     margin-top: 10px;
@@ -46,24 +48,25 @@ h4{
     margin-left: auto;
     margin-right: auto;
     display: block;
-    padding: 10px;
-    padding-right: 30px;
+    padding: 5px 50px;
+    border-radius: 10px;
     font-size: larger;
-    padding-left: 30px;
     font-weight: 600;
 }
 #btn:hover{
-    color: brown;
+    color:orange;
     background-color: black;
 
 }
 .btn{
-   margin-left: 210px;
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
     text-decoration: none;
     border: 1px solid;
     border-radius: 20px;
-    background-color: rgb(197, 228, 230);
-    padding: 10px;
+    background-color: rgb(13, 14, 14);
+    padding: 5px 50px;
 }
 .btn:hover{
     color: rgb(205, 15, 15);
@@ -90,10 +93,11 @@ p{
 }
 .p1{
     color: #fff;
-    margin-left: 700px;
+    margin-left: 950px;
     margin-top: 100px;
     position:absolute;
     font-size: 50px;
     color: red;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: rgba(0, 0, 0, 0.859);
 }

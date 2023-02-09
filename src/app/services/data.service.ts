@@ -169,7 +169,11 @@ deposit(acno:any,pswd:any,amt:any){
 //   }
 //  }
  getTransaction(acno:any){
-   return this.userDetails[acno]['transaction']
+  const data={
+    acno
+  }
+   return this.http.post('http://localhost:3000/transaction',data,this.getToken())
+  //  userDetails[acno]['transaction']
  }
 
  //for deleting account

@@ -1,10 +1,12 @@
-<button style="background-color:yellow; float:right; font-size:24px;margin-top: 50px;" (click)="logout()">Logout</button>
-<button style="background-color:red; float:right; font-size:24px;margin-right: 10px; margin-top: 50px;" (click)="delete()">Delete</button>
+
+
 <!-- child component -->
 <app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)"></app-delete>
 <div class="parent">
   <div class="div32">
-  <h1>Welcome {{user}}</h1>
+    <button style="background-color:yellow; float:right; font-size:24px;margin-top: 50px;" (click)="logout()">Logout</button>
+<button style="background-color:red; float:right; font-size:24px;margin-right: 10px; margin-top: 50px;" (click)="delete()">Delete</button>
+  <h1 class="h11">Welcome {{user}}</h1>
  <a routerLink="/transaction" style="font-size: 25px; margin-left: 30px;">tap to view transaction history</a>
  <h4 style="color:#fff; margin-left:50px;font-size:30px;">System Date and Time:{{sdate| date:'short'}}</h4>
 </div>
